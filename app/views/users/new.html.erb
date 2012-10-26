@@ -1,0 +1,43 @@
+<label style="padding-left: 300px;padding-top:20px;padding-bottom:20px;font-size: 2em;">注册新用户</label>
+
+<div style="padding-left: 200px;">
+  <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-error">
+              <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+            </div>
+
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                  <li>* <%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :name, "用户名" %>
+        <%= f.text_field :name, :class => "sign-in-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email, :class => "sign-in-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :password, "密码" %>
+        <%= f.password_field :password, :class => "sign-in-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "确认密码" %>
+        <%= f.password_field :password_confirmation, :class => "sign-in-field" %>
+      </div>
+      <!--<div class="field">-->
+        <!--<%#= f.label :password_confirmation, "上传头像" %>-->
+        <!--<%#= f.file_field :avatar, :class => "sign-in-field" %>-->
+      <!--</div>-->
+      <div class="actions">
+        <%= f.submit "提交   ", :class => "btn btn-large" %>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <td style='vertical-align:top;'>
+      <div class="main-content" style="display: block;">
+        <h2><%= @articles_title %></h2>
+        <% @articles.each do |article| %>
+            <div class="common-line" style="margin-top: 3px;margin-bottom: 3px;"></div>
+            <a href="<%= article_path article %>"><%= article.title %></a>
+        <% end %>
+        <div style="text-align: right;height: 30px;line-height: 30px;">
+          <a href="<%= articles_path %>" style="font-size: 1.2em">More News >></a>
+        </div>
+      </div>
+    </td>
+
+    <td width='12px;'></td>
+
+    <td style='vertical-align:top;'>
+
+      <div class="side-bar">
+        <div class="side-content">
+          <%= render 'common/article_button' %>
+        </div>
+        <%#= render 'common/supplier_button' %>
+        <%#= render 'common/question_button' %>
+      </div>
+
+      <!--<div class="side-content" style="margin-top: 10px;">-->
+        <!--<%#= render 'common/adsense' %>-->
+      <!--</div>-->
+    </td>
+  </tr>
+</table>

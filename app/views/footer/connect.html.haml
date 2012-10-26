@@ -1,0 +1,23 @@
+%h3 Connect us
+.common-line{style: "margin-top: 5px;margin-bottom: 10px;"}
+- flash.each do |key, value|
+  = content_tag(:div, value, class: "alert alert-#{key}")
+
+%div{style: "margin-top:10px"}
+  = form_for @connect, url: "/footer/create" do |f|
+    -if @connect.errors.any?
+      %div{id: "error_explanation"}
+        .alert.alert-error
+          =  pluralize(@connect.errors.count, "error")
+          prohibited this supplier from being saved:
+
+        %ul
+          - @connect.errors.full_messages.each do |msg|
+            %li
+              = msg
+
+    .field
+      = f.text_area :content, style: "height:180px;width:830px", toolbar: "Basic", cols: "20"
+    .actions{"margin-top" => "5px"}
+      = f.submit 'Connect us', class: "btn"
+      or <b>Email:</b> outofclouds@gmail.com

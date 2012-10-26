@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <td style='vertical-align:top;'>
+      <div class="main-content">
+        <label style="margin-bottom: 5px;" class="small-title">排名不分先后哦～</label>
+        <%= render @users %>
+      </div>
+    </td>
+
+    <td width='12px;'></td>
+
+    <td style='vertical-align:top;'>
+      <!--<div class="side-bar">-->
+        <!--<div class="side-content">-->
+          <!--<label style="margin-bottom: 3px;">本月勤奋奖牌榜</label>-->
+          <!--<%#= render :partial => "users/user_article_count", :locals => {:users => @users_month} %>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="side-bar">
+        <div class="side-content">
+          <label style="margin-bottom: 3px;" class="small-title">星星们 ^_^</label>
+          <%= render :partial => "users/user_article_count", :locals => {:users => @users_all_time} %>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

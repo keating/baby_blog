@@ -1,0 +1,12 @@
+<% users.each do |user| %>
+    <div class="common-line"></div>
+    <div style="vertical-align: top;">
+      <div style="display: inline-block;vertical-align: top;">
+        <%= gravatar_for user %>
+      </div>
+      <div style="display: inline-block;height:30px;margin-left: 3px;">
+        <label style="font-size: 1.2em"><%= link_to user.name, user %></label>
+        <%= (user.respond_to? :article_qty)?(user.article_qty):(user.article_count) %>次发言
+      </div>
+    </div>
+<% end %>

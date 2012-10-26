@@ -1,0 +1,16 @@
+<label style="padding-left: 300px;padding-top:20px;padding-bottom:20px;font-size: 2em;">登录</label>
+<br />
+
+<div style="padding-left: 200px;">
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+
+      <%= f.label :email, "Email" %>
+      <%= f.text_field :email, :class => "sign-in-field" %>
+      <br />
+      <%= f.label :password, "密码" %>
+      <%= f.password_field :password, :class => "sign-in-field" %>
+      <br />
+      <%= f.submit "登录   ", :class => "btn btn-large" %>
+
+  <% end %>
+</div>
