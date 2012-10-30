@@ -1,8 +1,13 @@
 zh-CN:
   activerecord:
+    errors:
+      messages:
+        record_invalid: 数据校验不合法
+
     models:
       article: 育儿经
     attributes:
       article:
         title: 标题
         content: 内容
+

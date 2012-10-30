@@ -1,4 +1,4 @@
 %label{style: "margin-bottom: 3px;", class: "small-title"} 浏览热榜
 - @hot_articles.each do |article|
   %div
-    =link_to article.title, style: "margin-left: 5px;"
+    =link_to article.title, article_path(article)

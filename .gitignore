@@ -15,3 +15,7 @@
 /tmp
 
 /.idea
+
+Gemfile.lock
+
+nohup.out

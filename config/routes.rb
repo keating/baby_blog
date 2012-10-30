@@ -1,15 +1,11 @@
 BabyBlog::Application.routes.draw do
+  devise_for :users
+
   resources :connects
 
   resources :articles
 
   resources :users
-
-  resources :sessions
-
-  match "signup" => "users#new"
-  match "login" => "sessions#new"
-  match "signout" => "sessions#destroy"
 
   match "search" => "articles#index"
 

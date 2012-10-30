@@ -1,21 +1,15 @@
-#require_relative "../uploaders/avatar_uploader"
-
 class User < ActiveRecord::Base
-
-  #mount_uploader :avatar, AvatarUploader
-
-  attr_accessible :email, :name, :password, :password_confirmation#, :avatar
-  has_secure_password
-
-  before_save { |user| user.email = email.downcase }
-  before_save :create_remember_token
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true, :length => {maximum: 50}
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-            uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  # attr_accessible :title, :body
 
   has_many :articles, :order => "created_at desc"
 
@@ -31,12 +25,6 @@ class User < ActiveRecord::Base
   # 减一篇日记
   def delete_article
     self.update_attribute :article_count, self.article_count - 1
-  end
-
-  private
-
-  def create_remember_token
-    self.remember_token = SecureRandom.urlsafe_base64
   end
 
   alias_method :latest, :latest_one_article

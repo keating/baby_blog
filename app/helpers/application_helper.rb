@@ -1,19 +1,24 @@
 #encoding: utf-8
 module ApplicationHelper
 
-  def error_messages_for(object_name, options = {})
-    options = options.symbolize_keys
-    object = instance_variable_get("@#{object_name}")
-    unless object.errors.empty?
-      error_lis = []
-      object.errors.each { |key, msg| error_lis << content_tag("li", msg) }
-      content_tag("div",
-                  content_tag(options[:header_tag] || "h2", "发生了#{object.errors.count}个错误") +
-                      content_tag("p", "错误来源于以下原因,请参考:") +
-                      content_tag("ul", error_lis),
-                  "id" => options[:id] || "errorExplanation", "class" => options[:class] || "errorExplanation"
-      )
-    end
+  def devise_error_messages_new!
+    return "" if resource.errors.empty?
+
+    msg_detail = resource.errors.full_messages.inject("") {|result, msg| result << "<li>* #{msg}</li>"}
+
+    html = <<-HTML
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        有 #{ resource.errors.count } 处问题导出操作失败:
+      </div>
+
+      <ul>
+        #{msg_detail}
+      </ul>
+    </div>
+    HTML
+
+    html.html_safe
   end
 
 end

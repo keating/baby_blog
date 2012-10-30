@@ -26,8 +26,8 @@ gem 'pg', '0.12.2'
 #end
 
 gem 'jquery-rails'
-
 gem 'haml'
+gem 'devise'
 
 #gem 'execjs'
 #gem 'therubyracer'
